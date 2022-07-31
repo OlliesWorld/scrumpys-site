@@ -7,9 +7,16 @@ import { FaInstagram } from '@react-icons/all-files/fa/FaInstagram';
 import { FaFacebookF } from '@react-icons/all-files/fa/FaFacebookF';
 
 const FooterWrapper = styled.div`
-  display: grid;
-  grid-template-columns: 30rem 1fr 25rem;
-  gap: 2rem;
+  border-top: 1px solid lightgray;
+  padding-top: 2rem;
+  padding-left: 2rem;
+  margin: 0;
+
+  @media (min-width: 800px) {
+    display: grid;
+    grid-template-columns: 30rem 1fr 25rem;
+    gap: 2rem;
+  }
   ul {
     padding-left: 0;
   }
@@ -19,6 +26,7 @@ const FooterWrapper = styled.div`
   }
 `;
 const HoursWrapper = styled.div`
+  margin: 0 auto;
   span {
     border-bottom: 1px solid red;
     font-weight: 400;

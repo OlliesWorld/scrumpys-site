@@ -43,11 +43,11 @@ async function turnFlavorsIntoPages({ graphql, actions }) {
 
   data.flavors.nodes.forEach((flavor) => {
     actions.createPage({
-      path: `flavors/${flavor.name}`,
+      path: `flavor/${flavor.name}`,
       component: flavorTemplate,
       context: {
         flavor: flavor.name,
-        flavorRegex: `/${flavor.name}/i`,
+        // flavorRegex: `/${flavor.name}/i`,
       },
     });
   });

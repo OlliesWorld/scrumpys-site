@@ -10,8 +10,8 @@ export default function Drinkspage({ data, pageContext }) {
       <SEO
         title={
           pageContext.beerKind
-            ? `beers With ${pageContext.beerKind} `
-            : 'All beers'
+            ? `drinks With ${pageContext.cocktails} `
+            : 'All Drinks'
         }
       />
       <h2>Cocktail Drinks</h2>

@@ -8,6 +8,12 @@ const CiderStyle = styled.div`
   display: grid;
   grid-gap: 2rem;
   grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+
+  @media (max-width: 500px) {
+    p {
+      width: 70%;
+    }
+  }
   img {
     width: 200px;
     height: 200px;

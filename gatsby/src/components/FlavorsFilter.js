@@ -15,6 +15,9 @@ const FlavorStyles = styled.div`
     padding: 5px;
     background: var(--grey);
     border-radius: 2px;
+    @media (max-width: 700px) {
+      font-size: 10px;
+    }
     .count {
       background: white;
       padding: 2px 5px;
@@ -76,7 +79,11 @@ export default function flavorsFilter({ activeflavor }) {
         <span className="count">{ciders.nodes.length}</span>
       </Link>
       {flavorsWithCount.map((flavor) => (
-        <Link key={flavor.id} to={`/flavor/${flavor.name}`}>
+        <Link
+          to={`/flavor/${flavor.name}`}
+          key={flavor.id}
+          className={flavor.name === activeflavor ? 'active' : ''}
+        >
           <span className="name">{flavor.name}</span>
           <span className="count">{flavor.count}</span>
         </Link>

@@ -16,16 +16,16 @@ export default function Ciderspage({ data, pageContext }) {
             : 'All ciders'
         }
       />
-      <FlavorsFilter activeFlavor={pageContext.Flavor} />
+      <FlavorsFilter activeFlavor={pageContext.flavor} />
       <CiderList ciders={ciders} />
     </>
   );
 }
 
 export const query = graphql`
-  query CiderQuery($flavorRegex: String) {
+  query CiderQuery($flavor: [String]) {
     ciders: allSanityCider(
-      filter: { flavors: { elemMatch: { name: { regex: $flavorRegex } } } }
+      filter: { flavors: { elemMatch: { name: { in: $flavor } } } }
     ) {
       nodes {
         name

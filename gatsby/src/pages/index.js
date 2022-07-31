@@ -4,6 +4,7 @@ import LoadingGrid from '../components/LoadingGrid';
 import { HomepageGrid } from '../styles/Grids';
 import useLatestData from '../utils/useLatestData';
 import ItemGrid from '../components/ItemGrid';
+import SEO from '../components/SEO';
 
 const ParagraphStyles = styled.div`
   margin: 0 auto;
@@ -66,14 +67,17 @@ export default function Homepage() {
   const { onTap, pourmaster, about, events } = useLatestData();
   console.log(events);
   return (
-    <div className="center">
-      <h1>Best Cider in town!</h1>
-      <HomepageGrid className="center">
-        <CurrentlyPouring pourmaster={pourmaster} />
-        <OnTap onTap={onTap} />
-        <Event event={events} />
-      </HomepageGrid>
-      <About about={about} />
-    </div>
+    <>
+      <SEO title="Scrumpys Cider Bar" />
+      <div className="center">
+        <h1>Best Cider in town!</h1>
+        <HomepageGrid className="center">
+          <CurrentlyPouring pourmaster={pourmaster} />
+          <OnTap onTap={onTap} />
+          <Event event={events} />
+        </HomepageGrid>
+        <About about={about} />
+      </div>
+    </>
   );
 }

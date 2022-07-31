@@ -13,7 +13,7 @@ const ContentStyles = styled.div`
 `;
 
 const SiteBorderStyles = styled.div`
-  max-width: 1000px;
+  /* max-width: 1000px; */
   margin: 12rem auto 4rem auto;
   margin-top: clamp(2rem, 10vw, 12rem);
   background: white url(${stripes});

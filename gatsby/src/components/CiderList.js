@@ -5,7 +5,9 @@ import styled from 'styled-components';
 
 const CiderGridStyles = styled.div`
   display: grid;
-  grid-template-columns: auto auto auto;
+  @media (min-width: 800px) {
+    grid-template-columns: auto auto auto;
+  }
   gap: 4rem;
   grid-auto-rows: auto auto 200px;
   margin-bottom: 5rem;

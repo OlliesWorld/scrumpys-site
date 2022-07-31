@@ -7,7 +7,7 @@ const NavStyles = styled.nav`
   .logo {
     transform: translateY(-25%);
     @media (max-width: 400px) {
-      width: 20%;
+      display: none;
     }
   }
   ul {
@@ -23,6 +23,13 @@ const NavStyles = styled.nav`
     align-items: center;
     text-align: center;
     list-style: none;
+    @media (max-width: 700px) {
+      grid-template-columns: fit-content(12rem) fit-content(12rem);
+      grid-gap: 0.4rem;
+      height: 10rem;
+      margin-top: 0.4rem;
+      margin-bottom: 2rem;
+    }
   }
   li {
     --rotate: -2deg;
