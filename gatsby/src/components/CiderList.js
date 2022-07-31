@@ -17,15 +17,15 @@ const CiderStyle = styled.div`
   }
   grid-template-rows: var(--rows, subgrid);
   grid-row: span;
-  grid-gap: 1rem;
+  grid-gap: 10px;
   h2,
   p {
     margin: 0;
   }
-  img {
+  /* img {
     width: 200px;
     height: 200px;
-  }
+  } */
 `;
 
 function SingleCider({ cider }) {
