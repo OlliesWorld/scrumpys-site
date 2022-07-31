@@ -36,9 +36,6 @@ const SocialWrapper = styled.ul`
 export default function Footer() {
   return (
     <footer>
-      <p className="center">
-        Scrumpy's Cider Bar &copy; {new Date().getFullYear()}
-      </p>
       <FooterWrapper>
         <StaticImage
           className="lp"
@@ -132,6 +129,9 @@ export default function Footer() {
           </ul>
         </div>
       </FooterWrapper>
+      <p className="center">
+        Scrumpy's Cider Bar &copy; {new Date().getFullYear()}
+      </p>
     </footer>
   );
 }

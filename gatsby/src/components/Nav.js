@@ -6,6 +6,9 @@ import Logo from './Logo';
 const NavStyles = styled.nav`
   .logo {
     transform: translateY(-25%);
+    @media (max-width: 400px) {
+      width: 20%;
+    }
   }
   ul {
     margin: 0;

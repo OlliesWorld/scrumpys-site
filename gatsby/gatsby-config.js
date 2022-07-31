@@ -3,7 +3,7 @@ require('dotenv').config();
 module.exports = {
   siteMetadata: {
     title: 'Scrumpys 2022',
-    siteUrl: 'https://cidertown.com',
+    siteUrl: 'https://scrumpys.netlify.app',
     description: 'the best cider bar in town',
   },
   plugins: [
