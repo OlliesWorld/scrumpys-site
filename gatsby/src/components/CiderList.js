@@ -5,9 +5,10 @@ import styled from 'styled-components';
 
 const CiderGridStyles = styled.div`
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  grid-template-columns: auto auto auto;
   gap: 4rem;
-  grid-auto-rows: auto auto 500px;
+  grid-auto-rows: auto auto 200px;
+  margin-bottom: 5rem;
 `;
 
 const CiderStyle = styled.div`
@@ -18,14 +19,11 @@ const CiderStyle = styled.div`
   grid-template-rows: var(--rows, subgrid);
   grid-row: span;
   grid-gap: 10px;
+  /* width: 50%; */
   h2,
   p {
     margin: 0;
   }
-  /* img {
-    width: 200px;
-    height: 200px;
-  } */
 `;
 
 function SingleCider({ cider }) {

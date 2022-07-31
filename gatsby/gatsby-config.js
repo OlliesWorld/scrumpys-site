@@ -4,7 +4,7 @@ module.exports = {
   siteMetadata: {
     title: 'Scrumpys 2022',
     siteUrl: 'https://cidertown.com',
-    description: 'the best cider bar in town of La Porte',
+    description: 'the best cider bar in town',
   },
   plugins: [
     `gatsby-plugin-styled-components`,
@@ -27,12 +27,6 @@ module.exports = {
       options: {
         name: `src`,
         path: `${__dirname}/src/`,
-      },
-    },
-    {
-      resolve: `gatsby-transform-portable-text`,
-      options: {
-        extendTypes: [{ typeName: `About`, contentFieldName: 'about' }],
       },
     },
   ],

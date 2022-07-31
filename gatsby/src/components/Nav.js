@@ -15,10 +15,9 @@ const NavStyles = styled.nav`
     grid-template-columns:
       fit-content(12rem) fit-content(12rem) fit-content(12rem)
       fit-content(40%) fit-content(12rem) fit-content(12rem) fit-content(12rem);
-    height: 20rem;
+    height: 23rem;
     grid-gap: 2rem;
     align-items: center;
-
     text-align: center;
     list-style: none;
   }
@@ -29,9 +28,11 @@ const NavStyles = styled.nav`
 
     &:nth-child(1) {
       --rotate: 1deg;
+      height: 3rem;
     }
     &:nth-child(2) {
       --rotate: -2.5deg;
+      height: 3rem;
     }
     &:nth-child(4) {
       --rotate: 2.5deg;
@@ -43,6 +44,7 @@ const NavStyles = styled.nav`
   a {
     font-size: 2.5rem;
     text-decoration: none;
+
     &:hover {
       color: var() (--red);
     }
@@ -63,7 +65,7 @@ export default function Nav() {
           <Link to="/beers">On Draft</Link>
         </li>
         <li>
-          <Link to="/cocktails/">Cocktails</Link>
+          <Link to="/drinks/">Drinks</Link>
         </li>
         <li className="logo">
           <Link to="/">

@@ -13,6 +13,13 @@ const BeerStyle = styled.div`
     height: 250px;
     margin: 0 auto;
   }
+  .header {
+    display: flex;
+    align-items: center;
+    h2 {
+      margin-right: 1rem;
+    }
+  }
 `;
 
 export default function SingleBeerPage({ data: { beer } }) {
@@ -22,13 +29,13 @@ export default function SingleBeerPage({ data: { beer } }) {
       <BeerStyle>
         <GatsbyImage image={beer.image.asset.gatsbyImage} alt={beer.name} />
         <div>
-          <h2 className="mark">{beer.name}</h2>
-          <p>{beer.description}</p>
-          <ul>
+          <div className="header">
+            <h2 className="mark">{beer.name}</h2>
             {beer.beerKind.map((beerKind) => (
-              <li key={beerKind.id}>{beerKind.name}</li>
+              <p key={beerKind.id}>{beerKind.name}</p>
             ))}
-          </ul>
+          </div>
+          <p className="paragraph">{beer.description}</p>
         </div>
       </BeerStyle>
     </>
@@ -42,7 +49,7 @@ export const query = graphql`
       id
       image {
         asset {
-          gatsbyImage(width: 200)
+          gatsbyImage(width: 100)
         }
       }
       beerKind {

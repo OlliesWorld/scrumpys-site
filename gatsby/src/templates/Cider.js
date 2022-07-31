@@ -9,8 +9,8 @@ const CiderStyle = styled.div`
   grid-gap: 2rem;
   grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
   img {
-    width: 250px;
-    height: 250px;
+    width: 200px;
+    height: 200px;
     margin: 0 auto;
   }
 `;
