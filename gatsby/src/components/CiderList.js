@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'gatsby';
-import { GatsbyImage } from 'gatsby-plugin-image';
+import { GatsbyImage, getImage } from 'gatsby-plugin-image';
 import styled from 'styled-components';
 
 const CiderGridStyles = styled.div`
@@ -16,15 +16,20 @@ const CiderStyle = styled.div`
     --rows: auto auto 1fr;
   }
   grid-template-rows: var(--rows, subgrid);
-  grid-row: span 3;
+  grid-row: span;
   grid-gap: 1rem;
   h2,
   p {
     margin: 0;
   }
+  img {
+    width: 200px;
+    height: 200px;
+  }
 `;
 
 function SingleCider({ cider }) {
+  const image = getImage(cider.image?.asset?.gatsbyImage);
   return (
     <CiderStyle>
       <Link to={`/cider/${cider.slug.current}`}>
@@ -33,7 +38,7 @@ function SingleCider({ cider }) {
         </h2>
       </Link>
       <p>{cider.flavors.map((flavor) => flavor.name).join(', ')}</p>
-      <GatsbyImage image={cider.image.asset.gatsbyImage} alt={cider.name} />
+      <GatsbyImage image={image} alt={cider.name} />
     </CiderStyle>
   );
 }

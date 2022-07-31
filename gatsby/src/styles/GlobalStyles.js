@@ -1,10 +1,10 @@
 import { createGlobalStyle } from 'styled-components';
-import bg from '../assets/images/bg.svg';
+import bg from '../assets/images/pattern-.svg';
 import stripes from '../assets/images/stripes.svg';
 
 const GlobalStyles = createGlobalStyle`
   :root {
-    --red: #FF4949;
+    --red: #bf0515;
     --black: #2E2E2E;
     --yellow: #ffc600;
     --white: #fff;
@@ -42,10 +42,6 @@ const GlobalStyles = createGlobalStyle`
     }
   }
 
-  /* .gatsby-image-wrapper img[src*=base64\\,] {
-    image-rendering: -moz-crisp-edges;
-    image-rendering: pixelated;
-  } */
 
   /* Scrollbar Styles */
   body::-webkit-scrollbar {
@@ -78,6 +74,11 @@ const GlobalStyles = createGlobalStyle`
   transform: rotate(-2deg);
   position: relative;
   display: inline-block;
+}
+.paragraph {
+  font-size: 16px;
+  font-family: Roboto, Helvetica, sans-serif;
+  
 }
 
 `;

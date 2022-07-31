@@ -1,62 +1,48 @@
 import React from 'react';
 import { graphql } from 'gatsby';
-import styled from 'styled-components';
+import BeerList from '../components/BeerList';
+// import FlavorsFilter from '../components/FlavorsFilter';
 import SEO from '../components/SEO';
 
-const BeerGridStyles = styled.div`
-  display: grid;
-  gap: 2rem;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-`;
+export default function Beerpage({ data, pageContext }) {
+  const beer = data.beer.nodes;
 
-const SingleBeerStyles = styled.div`
-  border: 1px solid var(--grey);
-  padding: 2rem;
-  text-align: center;
-  h3 {
-    font-size: 30px;
-    text-decoration: underline var(--yellow);
-  }
-  img {
-    width: 100%;
-    height: 200px;
-    object-fit: contain;
-    display: grid;
-    align-items: center;
-    font-size: 10px;
-  }
-`;
-
-export default function Beerspage({ data }) {
-  // console.log(data);
   return (
     <>
-      <SEO title={`Beers! We have ${data.beers.nodes.length} in stock`} />
-      <h2 className="center">We have {data.beers.nodes.length}</h2>
-      <BeerGridStyles>
-        {data.beers.nodes.map((beer) => (
-          <SingleBeerStyles key={beer.id}>
-            <img src={beer.image_url} alt={beer.name} />
-            <h3>{beer.name}</h3>
-            <p>abv: {beer.abv}</p>
-            <p>{beer.tagline}</p>
-          </SingleBeerStyles>
-        ))}
-      </BeerGridStyles>
+      <SEO
+        title={
+          pageContext.beerKind
+            ? `beers With ${pageContext.beerKind} `
+            : 'All beers'
+        }
+      />
+      {/* <FlavorsFilter activeFlavor={pageContext.Flavor} /> */}
+      <BeerList beer={beer} />
     </>
   );
 }
 
 export const query = graphql`
-  query {
-    beers: allBeer {
+  query BeerQuery($beerKindRegex: String) {
+    beer: allSanityOther(
+      filter: { beerKind: { elemMatch: { name: { regex: $beerKindRegex } } } }
+    ) {
       nodes {
-        id
         name
-        abv
-        image_url
-        tagline
-        food_pairing
+        id
+        slug {
+          current
+        }
+        description
+        beerKind {
+          name
+          id
+        }
+        image {
+          asset {
+            gatsbyImage(width: 200, placeholder: BLURRED, layout: FIXED)
+          }
+        }
       }
     }
   }

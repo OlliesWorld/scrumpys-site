@@ -39,7 +39,7 @@ export const query = graphql`
         }
         image {
           asset {
-            gatsbyImage(width: 400)
+            gatsbyImage(width: 100, placeholder: BLURRED, layout: FIXED)
           }
         }
       }

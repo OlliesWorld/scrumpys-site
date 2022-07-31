@@ -3,7 +3,7 @@ require('dotenv').config();
 module.exports = {
   siteMetadata: {
     title: 'Scrumpys 2022',
-    siteUrl: 'https://pizzatown.com',
+    siteUrl: 'https://cidertown.com',
     description: 'the best cider bar in town of La Porte',
   },
   plugins: [
@@ -18,7 +18,7 @@ module.exports = {
       options: {
         projectId: process.env.SANITY_PROJECT_ID,
         dataset: 'production',
-        watchMode: true,
+
         token: process.env.SANITY_TOKEN,
       },
     },
@@ -27,6 +27,12 @@ module.exports = {
       options: {
         name: `src`,
         path: `${__dirname}/src/`,
+      },
+    },
+    {
+      resolve: `gatsby-transform-portable-text`,
+      options: {
+        extendTypes: [{ typeName: `About`, contentFieldName: 'about' }],
       },
     },
   ],

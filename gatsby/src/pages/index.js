@@ -1,8 +1,14 @@
 import React from 'react';
+import styled from 'styled-components';
 import LoadingGrid from '../components/LoadingGrid';
 import { HomepageGrid } from '../styles/Grids';
 import useLatestData from '../utils/useLatestData';
 import ItemGrid from '../components/ItemGrid';
+
+const ParagraphStyles = styled.div`
+  margin: 0 auto;
+  line-height: 1.5;
+`;
 
 function CurrentlyPouring({ pourmaster }) {
   return (
@@ -18,32 +24,56 @@ function CurrentlyPouring({ pourmaster }) {
   );
 }
 
-function Ontap({ ontap }) {
-  console.log(ontap);
+function OnTap({ onTap }) {
   return (
     <div>
       <h2 className="center">
         <span className="mark tilt">On Tap </span>
       </h2>
       <p>Come on by, buy the pint!</p>
-      {!ontap && <LoadingGrid count={4} />}
-      {ontap && !ontap?.length && <p>No pizza ready!</p>}
-      {ontap?.length && <ItemGrid items={ontap} />}
+      {!onTap && <LoadingGrid count={4} />}
+      {onTap && !onTap?.length && <p>No pizza ready!</p>}
+      {onTap?.length && <ItemGrid items={onTap} />}
     </div>
   );
 }
 
-export default function Homepage() {
-  const { pourmaster, ontap } = useLatestData();
+function Event({ events }) {
+  console.log(events);
+  return (
+    <div>
+      <h2 className="center">
+        <span className="mark tilt">Events </span>
+      </h2>
 
+      {/* {events.map((fun) => (
+        <p key={fun.id}>{fun.name}</p>
+      ))} */}
+    </div>
+  );
+}
+function About({ about }) {
+  return (
+    <ParagraphStyles className="center">
+      <h2>
+        <span className="mark tilt">Let us tell you a story! </span>
+      </h2>
+      <p className="paragraph">{about}</p>
+    </ParagraphStyles>
+  );
+}
+export default function Homepage() {
+  const { onTap, pourmaster, about, events } = useLatestData();
+  console.log(events);
   return (
     <div className="center">
       <h1>Best Cider in town!</h1>
-      <p>Open 11am to 11pm Every Single Day</p>
       <HomepageGrid className="center">
         <CurrentlyPouring pourmaster={pourmaster} />
-        <Ontap ontap={ontap} />
+        <OnTap onTap={onTap} />
+        <Event event={events} />
       </HomepageGrid>
+      <About about={about} />
     </div>
   );
 }

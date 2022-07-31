@@ -27,19 +27,19 @@ const SiteBorderStyles = styled.div`
     margin-right: 1.5rem;
   }
 `;
+const LocaleContext = React.createContext();
 
-export default function Layout({ children }) {
-  return (
-    <>
-      <GlobalStyles />
-      <Typography />
-      <SiteBorderStyles>
-        <ContentStyles>
-          <Nav />
-          {children}
-          <Footer />
-        </ContentStyles>
-      </SiteBorderStyles>
-    </>
-  );
-}
+const Layout = ({ children, pageContext: { locale } }) => (
+  <LocaleContext.Provider value={{ locale }}>
+    <GlobalStyles />
+    <Typography />
+    <SiteBorderStyles>
+      <ContentStyles>
+        <Nav />
+        {children}
+        <Footer />
+      </ContentStyles>
+    </SiteBorderStyles>
+  </LocaleContext.Provider>
+);
+export { Layout, LocaleContext };

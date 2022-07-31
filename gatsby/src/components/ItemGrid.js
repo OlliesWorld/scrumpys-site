@@ -10,12 +10,12 @@ export default function ItemGrid({ items }) {
             <span className="mark">{item.name}</span>
           </p>
           <img
-            width="500"
-            height="450"
-            src={`${item.image.asset.url}?w=500&h=450&fit=crop`}
+            width="200"
+            height="250"
+            src={`${item.image.asset?.url}?w=500&h=450&fit=crop`}
             alt={item.name}
             style={{
-              background: `url(${item.image.asset.metadata.lqip})`,
+              background: `url(${item.image.asset?.metadata.lqip})`,
               backgroundSize: 'cover',
             }}
           />

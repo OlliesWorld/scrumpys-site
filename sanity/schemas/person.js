@@ -28,7 +28,7 @@ export default {
     },
     {
       name: 'image',
-      title: 'Cider Image',
+      title: 'Image',
       type: 'image',
       options: {
         hotspot: true,

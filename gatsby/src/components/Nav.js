@@ -12,7 +12,10 @@ const NavStyles = styled.nav`
     margin-top: -6rem;
     padding: 0;
     display: grid;
-    grid-template-columns: 1fr 1fr auto 1fr 1fr;
+    grid-template-columns:
+      fit-content(12rem) fit-content(12rem) fit-content(12rem)
+      fit-content(40%) fit-content(12rem) fit-content(12rem) fit-content(12rem);
+    height: 20rem;
     grid-gap: 2rem;
     align-items: center;
 
@@ -38,7 +41,7 @@ const NavStyles = styled.nav`
     }
   }
   a {
-    font-size: 3rem;
+    font-size: 2.5rem;
     text-decoration: none;
     &:hover {
       color: var() (--red);
@@ -54,10 +57,13 @@ export default function Nav() {
     <NavStyles>
       <ul>
         <li>
-          <Link to="/">Hot Now</Link>
+          <Link to="/ciders/">Ciders List</Link>
         </li>
         <li>
-          <Link to="/ciders/">Ciders List</Link>
+          <Link to="/beers">On Draft</Link>
+        </li>
+        <li>
+          <Link to="/cocktails/">Cocktails</Link>
         </li>
         <li className="logo">
           <Link to="/">
@@ -65,11 +71,14 @@ export default function Nav() {
           </Link>
         </li>
         <li>
+          <Link to="/menu/">menu</Link>
+        </li>
+        <li>
           <Link to="/pourmasters/">Pourmasters</Link>
         </li>
-        {/* <li>
-          <Link to="/order/">Order Ahead!</Link>
-        </li> */}
+        <li>
+          <Link to="/news/">News</Link>
+        </li>
       </ul>
     </NavStyles>
   );

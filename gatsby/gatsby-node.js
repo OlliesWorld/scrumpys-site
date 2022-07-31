@@ -1,5 +1,3 @@
-const fetch = require('isomorphic-fetch');
-
 const path = require('path');
 
 async function turnCidersIntoPages({ graphql, actions }) {
@@ -55,32 +53,31 @@ async function turnFlavorsIntoPages({ graphql, actions }) {
   });
 }
 
-async function fetchBeersIntoNodes({
-  actions,
-  createNodeId,
-  createContentDigest,
-}) {
-  const res = await fetch('https://api.punkapi.com/v2/beers');
-  const beers = await res.json();
+async function turnBeersIntoPages({ graphql, actions }) {
+  const beerTemplate = path.resolve('./src/templates/Beer.js');
 
-  for (const beer of beers) {
-    const nodeMeta = {
-      id: createNodeId(`beer-${beer.name}`),
-      parent: null,
-      children: [],
-      internal: {
-        type: 'Beer',
-        mediaType: 'applications/json',
-        contentDigest: createContentDigest(beer),
+  const { data } = await graphql(`
+    query {
+      beers: allSanityOther {
+        nodes {
+          name
+          slug {
+            current
+          }
+        }
+      }
+    }
+  `);
+
+  data.beers.nodes.forEach((beer) => {
+    actions.createPage({
+      path: `beer/${beer.slug.current}`,
+      component: beerTemplate,
+      context: {
+        slug: beer.slug.current,
       },
-    };
-
-    actions.createNode({
-      ...beer,
-      ...nodeMeta,
     });
-  }
-  // console.log(beers);
+  });
 }
 
 async function turnPourmastersIntoPages({ graphql, actions }) {
@@ -125,13 +122,10 @@ async function turnPourmastersIntoPages({ graphql, actions }) {
   });
 }
 
-exports.sourceNodes = async (params) => {
-  await Promise.all([fetchBeersIntoNodes(params)]);
-};
-
 exports.createPages = async (params) => {
   await Promise.all([
     turnCidersIntoPages(params),
+    turnBeersIntoPages(params),
     turnFlavorsIntoPages(params),
     turnPourmastersIntoPages(params),
   ]);

@@ -1,5 +1,4 @@
 import { FaAppleAlt as icon } from 'react-icons/fa';
-// import PriceInput from '../components/PriceInput';
 
 export default {
   name: 'cider',
@@ -19,7 +18,7 @@ export default {
       type: 'slug',
       options: {
         source: 'name',
-        maxLength: 100,
+        maxLength: 300,
       },
     },
     {
@@ -30,14 +29,6 @@ export default {
         hotspot: true,
       },
     },
-    // {
-    //   name: 'price',
-    //   title: 'Cider Price',
-    //   type: 'number',
-    //   inputComponent: PriceInput,
-    //   description: 'price of cider in cents',
-    //   validation: (Rule) => Rule.min(1000).max(5000),
-    // },
     {
       name: 'abv',
       title: 'ABV %',

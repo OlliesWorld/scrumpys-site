@@ -28,7 +28,7 @@ Netlify
 ### To-do
 
 - [] Update with all Scrumpys info
-- [] add api features
+- [] add api features for untapped and socials
 - [x ] Gatsby Image upgrade
 - [ ] Done!
 

@@ -1,25 +1,27 @@
 import { useEffect, useState } from 'react';
-// import { graphql } from 'gatsby';
 
 const gql = String.raw;
 
-// const deets = `
-//     name
-//     _id
-//     image {
-//       asset {
-//         url
-//         metadata {
-//           lqip
-//         }
-//       }
-//     }
+const deets = `
+    name
+    _id
+    image {
+      asset {
+        url
+        metadata {
+          lqip
+        }
+      }
+    }
 
-// `;
+`;
 
 export default function useLatestData() {
-  const [ontap, setOntap] = useState();
+  const [onTap, setOnTap] = useState();
   const [pourmaster, setPourmaster] = useState();
+  const [about, setAbout] = useState();
+  const [events, setEvents] = useState();
+
   useEffect(function () {
     fetch(process.env.GATSBY_GRAPHQL_ENDPOINT, {
       method: 'POST',
@@ -29,30 +31,19 @@ export default function useLatestData() {
       body: JSON.stringify({
         query: gql`
           query {
-            allStoreSettings {
+            StoreSettings(id: "downtown") {
+              name
               pourmaster {
-                name
-                _id
-                image {
-                  asset {
-                    url
-                    metadata {
-                      lqip
-                    }
-                  }
-                }
+                ${deets}
               }
-              ontap {
-                name
+              onTap {
+              ${deets}
+              }
+              about 
+              events {
                 _id
-                image {
-                  asset {
-                    url
-                    metadata {
-                      lqip
-                    }
-                  }
-                }
+                name
+                description
               }
             }
           }
@@ -61,9 +52,10 @@ export default function useLatestData() {
     })
       .then((res) => res.json())
       .then((res) => {
-        console.log(res);
-        setOntap(res.data.allStoreSettings.ontap);
-        setPourmaster(res.data.allStoreSettings.pourmaster);
+        setOnTap(res.data.StoreSettings.onTap);
+        setPourmaster(res.data.StoreSettings.pourmaster);
+        setAbout(res.data.StoreSettings.about);
+        setEvents(res.data.StoreSettings.events);
       })
       .catch((err) => {
         console.log('shoot!', err);
@@ -71,7 +63,9 @@ export default function useLatestData() {
   }, []);
 
   return {
-    ontap,
+    onTap,
     pourmaster,
+    about,
+    events,
   };
 }
