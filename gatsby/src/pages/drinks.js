@@ -1,6 +1,11 @@
 import React from 'react';
 import { graphql } from 'gatsby';
+import styled from 'styled-components';
 import SEO from '../components/SEO';
+
+const CocktailStyles = styled.div`
+  width: 50%;
+`;
 
 export default function Drinkspage({ data, pageContext }) {
   const cocktails = data.cocktails.nodes;
@@ -14,13 +19,15 @@ export default function Drinkspage({ data, pageContext }) {
             : 'All Drinks'
         }
       />
-      <h2>Cocktail Drinks</h2>
-      {cocktails.map((cocktail) => (
-        <div key={cocktail.id}>
-          <h3>{cocktail.name} </h3>
-          <p>{cocktail.description}</p>
-        </div>
-      ))}
+      <CocktailStyles>
+        <h2>Cocktail Drinks</h2>
+        {cocktails.map((cocktail) => (
+          <div key={cocktail.id}>
+            <h3 className="mark tilt">{cocktail.name} </h3>
+            <p>{cocktail.description}</p>
+          </div>
+        ))}
+      </CocktailStyles>
       <h2>Other Drinks</h2>
     </>
   );

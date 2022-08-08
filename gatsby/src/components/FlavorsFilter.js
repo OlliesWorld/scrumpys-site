@@ -51,7 +51,7 @@ function countCidersInFlavors(ciders) {
 }
 
 export default function flavorsFilter({ activeflavor }) {
-  const { flavors, ciders } = useStaticQuery(graphql`
+  const { ciders } = useStaticQuery(graphql`
     query {
       flavors: allSanityFlavor {
         nodes {

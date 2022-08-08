@@ -1,7 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
+import { graphql, Link } from 'gatsby';
 import LoadingGrid from '../components/LoadingGrid';
-import { HomepageGrid } from '../styles/Grids';
+import { HomepageGrid, EventsGrid } from '../styles/Grids';
 import useLatestData from '../utils/useLatestData';
 import ItemGrid from '../components/ItemGrid';
 import SEO from '../components/SEO';
@@ -39,20 +40,6 @@ function OnTap({ onTap }) {
   );
 }
 
-function Event({ events }) {
-  console.log(events);
-  return (
-    <div>
-      <h2 className="center">
-        <span className="mark tilt">Events </span>
-      </h2>
-
-      {/* {events.map((fun) => (
-        <p key={fun.id}>{fun.name}</p>
-      ))} */}
-    </div>
-  );
-}
 function About({ about }) {
   return (
     <ParagraphStyles className="center">
@@ -63,21 +50,50 @@ function About({ about }) {
     </ParagraphStyles>
   );
 }
-export default function Homepage() {
-  const { onTap, pourmaster, about, events } = useLatestData();
-  console.log(events);
+export default function Homepage({ data }) {
+  const { onTap, pourmaster, about } = useLatestData();
+  const events = data.events.nodes;
   return (
     <>
-      <SEO title="Scrumpys Cider Bar" />
+      <SEO title="Scrumpy's Cider Bar" />
       <div className="center">
         <h1>Best Cider in town!</h1>
         <HomepageGrid className="center">
-          <CurrentlyPouring pourmaster={pourmaster} />
           <OnTap onTap={onTap} />
-          <Event event={events} />
+          <CurrentlyPouring pourmaster={pourmaster} />
+
+          <div>
+            <h2 className="center">
+              <span>Events </span>
+            </h2>
+
+            {events.map((fun) => (
+              <EventsGrid key={fun._id}>
+                <h3 className="mark tilt">{fun.name}</h3>
+                <p>{fun.description}</p>
+              </EventsGrid>
+            ))}
+          </div>
+          <div>
+            <Link to="/news" className="center">
+              Check out the latest!
+            </Link>
+          </div>
         </HomepageGrid>
         <About about={about} />
       </div>
     </>
   );
 }
+
+export const query = graphql`
+  query EventsQuery {
+    events: allSanityEvent {
+      nodes {
+        name
+        _id
+        description
+      }
+    }
+  }
+`;

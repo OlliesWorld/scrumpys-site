@@ -78,3 +78,5 @@ yarn-error.log
 finished-files-before-record/
 
 .vscode/*
+# Local Netlify folder
+.netlify

@@ -1,8 +1,9 @@
 import React from 'react';
 import { graphql } from 'gatsby';
 import BeerList from '../components/BeerList';
-// import FlavorsFilter from '../components/FlavorsFilter';
+
 import SEO from '../components/SEO';
+import KindFilter from '../components/TypeOfBeer';
 
 export default function Beerpage({ data, pageContext }) {
   const beer = data.beer.nodes;
@@ -16,7 +17,7 @@ export default function Beerpage({ data, pageContext }) {
             : 'All beers'
         }
       />
-      {/* <FlavorsFilter activeFlavor={pageContext.Flavor} /> */}
+      <KindFilter activeKind={pageContext.Kind} />
       <BeerList beer={beer} />
     </>
   );

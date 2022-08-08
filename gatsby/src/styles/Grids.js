@@ -2,8 +2,11 @@ import styled from 'styled-components';
 
 export const HomepageGrid = styled.div`
   display: grid;
-  gap: 2rem;
-  grid-template-columns: repeat(2, minmax(auto, 1fr));
+  grid-auto-flow: dense;
+  @media (min-width: 700px) {
+    gap: 2rem;
+    grid-template-columns: repeat(2, minmax(auto, 1fr));
+  }
   margin-bottom: 4rem;
 `;
 
@@ -54,4 +57,16 @@ export const ItemStyles = styled.div`
     background-size: 500px;
     animation: shine 1s infinite linear;
   }
+`;
+
+export const EventsGrid = styled.div`
+  display: grid;
+  grid-auto-flow: dense;
+  justify-items: center;
+  align-items: center;
+  @media (min-width: 700px) {
+    gap: 2rem;
+    grid-template-columns: repeat(1, minmax(auto, 1fr));
+  }
+  margin: 0 auto;
 `;

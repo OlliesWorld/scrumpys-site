@@ -41,7 +41,7 @@ export default function Logo() {
         <StaticImage
           className="lp"
           src="../assets/images/scrumpy-logo.jpeg"
-          alt="Scrumpys Logo"
+          alt="Scrumpy's Logo"
           width={250}
         />
       </LogoStyles>

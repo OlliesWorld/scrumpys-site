@@ -20,7 +20,6 @@ export default function useLatestData() {
   const [onTap, setOnTap] = useState();
   const [pourmaster, setPourmaster] = useState();
   const [about, setAbout] = useState();
-  const [events, setEvents] = useState();
 
   useEffect(function () {
     fetch(process.env.GATSBY_GRAPHQL_ENDPOINT, {
@@ -40,11 +39,7 @@ export default function useLatestData() {
               ${deets}
               }
               about 
-              events {
-                _id
-                name
-                description
-              }
+              
             }
           }
         `,
@@ -55,7 +50,6 @@ export default function useLatestData() {
         setOnTap(res.data.StoreSettings.onTap);
         setPourmaster(res.data.StoreSettings.pourmaster);
         setAbout(res.data.StoreSettings.about);
-        setEvents(res.data.StoreSettings.events);
       })
       .catch((err) => {
         console.log('shoot!', err);
@@ -66,6 +60,5 @@ export default function useLatestData() {
     onTap,
     pourmaster,
     about,
-    events,
   };
 }

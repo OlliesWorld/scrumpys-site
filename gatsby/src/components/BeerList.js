@@ -5,15 +5,14 @@ import styled from 'styled-components';
 
 const BeerGridStyles = styled.div`
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-  gap: 4rem;
-  grid-auto-rows: auto auto 500px;
+  gap: 2rem;
+  grid-template-columns: 1fr 1fr 1fr;
 `;
 
 const BeerStyle = styled.div`
   display: grid;
   @supports not (grid-template-rows: subgrid) {
-    --rows: auto auto 1fr;
+    --rows: 2.8rem 10rem 3rem;
   }
   grid-template-rows: var(--rows, subgrid);
   grid-row: span;
@@ -37,10 +36,10 @@ function SingleBeer({ beer }) {
           <span className="mark">{beer.name}</span>
         </h2>
       </Link>
+      <GatsbyImage image={image} alt={beer.name} />
       <p className="description">
         {beer.beerKind.map((beerKind) => beerKind.name).join(', ')}
       </p>
-      <GatsbyImage image={image} alt={beer.name} />
       <p className="description paragraph">{beer.description}</p>
     </BeerStyle>
   );

@@ -29,10 +29,17 @@ async function turnCidersIntoPages({ graphql, actions }) {
 
 async function turnFlavorsIntoPages({ graphql, actions }) {
   const flavorTemplate = path.resolve('./src/pages/ciders.js');
+  const kindTemplate = path.resolve('./src/pages/beers.js');
 
   const { data } = await graphql(`
     query {
       flavors: allSanityFlavor {
+        nodes {
+          name
+          id
+        }
+      }
+      kind: allSanityBeerKind {
         nodes {
           name
           id
@@ -51,7 +58,26 @@ async function turnFlavorsIntoPages({ graphql, actions }) {
       },
     });
   });
+  data.kind.nodes.forEach((kind) => {
+    actions.createPage({
+      path: `kind/${kind.name}`,
+      component: kindTemplate,
+      context: {
+        flavor: kind.name,
+        // flavorRegex: `/${flavor.name}/i`,
+      },
+    });
+  });
 }
+// async function turnKindsIntoPages({ graphql, actions }) {
+//   const { data } = await graphql(`
+//     query {
+
+//     }
+//   `);
+
+//   console.log(data.kind);
+// }
 
 async function turnBeersIntoPages({ graphql, actions }) {
   const beerTemplate = path.resolve('./src/templates/Beer.js');
@@ -127,6 +153,7 @@ exports.createPages = async (params) => {
     turnCidersIntoPages(params),
     turnBeersIntoPages(params),
     turnFlavorsIntoPages(params),
+
     turnPourmastersIntoPages(params),
   ]);
 };

@@ -8,9 +8,9 @@ export default {
   fields: [
     {
       name: 'name',
-      title: 'Cider Name',
+      title: 'Cocktail Name',
       type: 'string',
-      description: 'name of cider',
+      description: 'name of cocktail',
     },
     {
       name: 'slug',

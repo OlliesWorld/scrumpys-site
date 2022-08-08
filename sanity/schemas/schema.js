@@ -10,6 +10,8 @@ import other from './other';
 import beerKind from './beerKind';
 import event from './event';
 import cocktail from './cocktail';
+import foodtype from './foodtype';
+import menu from './menu';
 
 export default createSchema({
   // We name our schema
@@ -21,10 +23,12 @@ export default createSchema({
     cider,
     other,
     cocktail,
+    menu,
     person,
     event,
     size,
     beerKind,
     flavors,
+    foodtype,
   ]),
 });
