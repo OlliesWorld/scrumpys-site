@@ -17,7 +17,7 @@ export default function Menuspage({ data, pageContext }) {
       <h2>Menu</h2>
       {foods.map((food) => (
         <div key={food.id}>
-          <h3 className="mark">{food.name} </h3>
+          <h3 className="underline">{food.name} </h3>
           <p>{food.description}</p>
         </div>
       ))}

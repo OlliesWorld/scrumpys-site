@@ -8,7 +8,14 @@ const CiderStyle = styled.div`
   display: grid;
   grid-gap: 2rem;
   grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
-
+  li {
+    list-style-type: none;
+    display: inline;
+    margin-right: 2.5rem;
+  }
+  li::before {
+    content: '🍏';
+  }
   @media (max-width: 500px) {
     p {
       width: 70%;
@@ -29,6 +36,9 @@ export default function SingleCiderPage({ data: { cider } }) {
         <GatsbyImage image={cider.image.asset.gatsbyImage} alt={cider.name} />
         <div>
           <h2 className="mark">{cider.name}</h2>
+          <p>
+            {cider.abv} | {cider.brewery} | {cider.location}
+          </p>
           <p>{cider.description}</p>
           <ul>
             {cider.flavors.map((flavor) => (
@@ -55,6 +65,9 @@ export const query = graphql`
         name
         id
       }
+      abv
+      brewery
+      location
     }
   }
 `;

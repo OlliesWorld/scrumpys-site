@@ -33,6 +33,7 @@ export const query = graphql`
         slug {
           current
         }
+        abv
         flavors {
           name
           id

@@ -23,7 +23,8 @@ const FlavorStyles = styled.div`
       padding: 2px 5px;
     }
     &[aria-current='page'] {
-      background: var(--yellow);
+      background: var(--green);
+      color: white;
     }
   }
 `;

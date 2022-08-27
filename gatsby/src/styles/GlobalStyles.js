@@ -6,7 +6,7 @@ const GlobalStyles = createGlobalStyle`
   :root {
     --red: #bf0515;
     --black: #2E2E2E;
-    --yellow: #41916a;
+    --green: rgba(41,163,122,1.00); //#008037; //#119100
     --white: #fff;
     --grey: #efefef;
   }
@@ -80,7 +80,10 @@ const GlobalStyles = createGlobalStyle`
   font-family: Roboto, Helvetica, sans-serif;
   
 }
-
+.underline {
+  border-bottom: 2px solid var(--green);
+  width: fit-content;
+}
 `;
 
 export default GlobalStyles;

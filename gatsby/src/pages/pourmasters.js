@@ -28,7 +28,8 @@ const PourMastersStyles = styled.div`
     z-index: 2;
   }
   .description {
-    background: var(--yellow);
+    background: var(--green);
+    color: white;
     padding: 1rem;
     margin: 2rem;
     margin-top: -6rem;
