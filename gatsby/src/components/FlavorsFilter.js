@@ -24,7 +24,6 @@ const FlavorStyles = styled.div`
     }
     &[aria-current='page'] {
       background: var(--green);
-      color: white;
     }
   }
 `;
