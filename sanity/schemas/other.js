@@ -1,4 +1,4 @@
-import { IoBeerOutline as icon } from 'react-icons/io';
+import { BiBeer as icon } from 'react-icons/bi';
 
 export default {
   name: 'other',

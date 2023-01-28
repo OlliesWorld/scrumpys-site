@@ -3,7 +3,7 @@
 
     [[redirects]]
   from = "/pathx"
-  to = "https://example.com/patha"
+  to = "https://scrumpys.netlify.app"
   status = 200
   force = true
   headers = {X-From = "Netlify"}

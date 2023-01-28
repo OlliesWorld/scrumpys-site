@@ -1,4 +1,4 @@
-import { IoFastFood as icon } from 'react-icons/io';
+import { MdFastfood as icon } from 'react-icons/md';
 
 export default {
   name: 'food',
