@@ -41,7 +41,7 @@ const PourMastersStyles = styled.div`
 `;
 
 export default function Pourmasterspage({ data, pageContext }) {
-  console.log(data.pourmasters.nodes);
+  // console.log(data.pourmasters.nodes);
   const pourmasters = data.pourmasters.nodes;
   return (
     <>

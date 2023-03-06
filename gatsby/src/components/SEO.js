@@ -1,6 +1,6 @@
 import React from 'react';
 import { useStaticQuery, graphql } from 'gatsby';
-import { Helmet } from 'react-helmet';
+// import { Helmet } from 'react-helmet';
 
 export default function SEO({ children, location, description, title, image }) {
   const { site } = useStaticQuery(graphql`
@@ -14,7 +14,7 @@ export default function SEO({ children, location, description, title, image }) {
     }
   `);
   return (
-    <Helmet titleTemplate={`%s - ${site.siteMetadata.title}`}>
+    <>
       <html lang="en" />
       <title>{title}</title>
       <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
@@ -32,6 +32,6 @@ export default function SEO({ children, location, description, title, image }) {
       />
       <meta property="og:description" content={description} key="ogdesc" />
       {children}
-    </Helmet>
+    </>
   );
 }
